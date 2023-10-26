@@ -1,0 +1,92 @@
+MEANS: [123.68, 116.78, 103.94]
+INPUT_SIZE: 512
+TEXT_SCALE: 512
+GEOMETRY: 'RBOX'
+
+PREPROCESS:
+  DATA_DIR: "ToC2761/"
+  ORIGIN_IMAGE_DIR: "imgs/"
+  ORIGIN_JSONS_DIR: "jsons/"
+  TRAIN_IMAGE_DIR: "train/"
+  TRAIN_LABEL_DIR: "label/"
+  SHOW_GT_IMAGE_DIR: "show_gt_image/"
+  SHOW_ACT_IMAGE_DIR: "show_act_image/"
+  #  是否画框
+  IS_DRAW_GT_QUAD: True
+  #是否生成原始训练数据
+  IS_GEN_ORIGIN_IMG: True
+
+TRAIN:
+  GPU_LIST: '0,1'
+  BATCH_SIZE_PER_GPU: 16
+  NUM_READERS: 2
+  LEARNING_RATE: 0.0001
+  MAX_STEPS: 10000000
+  MOVING_AVERAGE_DECAY: 0.997
+  RESTORE: True
+  SAVE_CHECKPOINT_STEPS: 1000
+  SAVE_SUMMARY_STEPS: 100
+  PRETRAINED_MODEL_DIR: None
+  MULTIL_GPU: False
+  GPU_NUM: 2
+  TRAIN_LOGS: '/workspace/boby/projects/EAST_tf/tf_logs/'
+
+  CHECKPOINTS_OUTPUT_DIR: '/workspace/boby/model/EAST_tf/ckpt/'
+
+  # 训练数据
+  TRAINING_DATA_DIR: "/workspace/boby/data/ocr_train_data/all_train_20190409/train_imgs_720p/"
+  # 训练数据label
+  TRAINING_DATA_LABEL_DIR: "/workspace/boby/data/ocr_train_data/all_train_20190409/train_labels_720p/"
+
+  # max image size of training
+  MAX_IMAGE_LARGE_SIDE: 1280
+
+  # if the text in the input image is bigger than this, then we resize
+  # the image according to this
+  max_text_size: 800
+  # 文本过小,则训练时候忽略这个框,长宽最小值
+  MIN_TEXT_SIZE: 10
+
+  # when doing random crop from input image, the
+  # min length of min(H, W)
+  MIN_CROP_SIDE_RATIO: 0.1
+
+
+
+TEST:
+  CHECKPOINT_DIR: '/workspace/boby/model/EAST_tf/ckpt'
+
+#  TEST_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_imgs_720p/'
+#  RESULT_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_result_EAST_tf_190510_1/result_img'
+#  RESULT_TXT_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_result_EAST_tf_190510_1/result_txt'
+#  SCORE_MAP_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_result_EAST_tf_190510_1/score_map'
+#  GEO_MAP_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_result_EAST_tf_190510_1/geo'
+
+
+#  TEST_DIR: '/workspace/boby/data/ocr_test_data/xcs_190505_100/test_hard/'
+#  RESULT_DIR: '/workspace/boby/data/ocr_test_data/xcs_190505_100/test_result_EAST_tf_hard_190520_1/result_img'
+#  RESULT_TXT_DIR: '/workspace/boby/data/ocr_test_data/xcs_190505_100/test_result_EAST_tf_hard_190520_1/result_txt'
+#  SCORE_MAP_DIR: '/workspace/boby/data/ocr_test_data/xcs_190505_100/test_result_EAST_tf_hard_190520_1/score_map'
+#  GEO_MAP_DIR: '/workspace/boby/data/ocr_test_data/xcs_190505_100/test_result_EAST_tf_hard_190520_1/geo'
+
+#  TEST_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_imgs_720p/'
+#  RESULT_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_result_EAST_tf_190505_1/result_img'
+#  RESULT_TXT_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_result_EAST_tf_190505_1/result_txt'
+#  SCORE_MAP_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_result_EAST_tf_190505_1/score_map'
+#  GEO_MAP_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_result_EAST_tf_190505_1/geo'
+
+#  TEST_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_hard/'
+#  RESULT_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_hard_result_EAST_tf_190429_1/result_img'
+#  RESULT_TXT_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_hard_result_EAST_tf_190429_1/result_txt'
+#  SCORE_MAP_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_hard_result_EAST_tf_190429_1/score_map'
+#  GEO_MAP_DIR: '/workspace/boby/data/ocr_test_data/toc_190408/test_hard_result_EAST_tf_190429_1/geo'
+
+#  # single test
+  TEST_DIR: '/workspace/boby/data/ocr_test_data/20190531_sinianji_test_81/imgs/'
+  RESULT_DIR: '/workspace/boby/data/ocr_test_data/20190531_sinianji_test_81/test_result_EAST_tf/result_img'
+  RESULT_TXT_DIR: '/workspace/boby/data/ocr_test_data/20190531_sinianji_test_81/test_result_EAST_tf/result_txt'
+  SCORE_MAP_DIR: '/workspace/boby/data/ocr_test_data/20190531_sinianji_test_81/test_result_EAST_tf/score_map'
+  GEO_MAP_DIR: '/workspace/boby/data/ocr_test_data/20190531_sinianji_test_81/test_result_EAST_tf/geo'
+
+
+  WRITE_IMAGES: 1

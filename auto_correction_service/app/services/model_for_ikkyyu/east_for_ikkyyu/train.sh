@@ -1,0 +1,2 @@
+axer login --phone='18813009029' --password='chinayang1990'
+axer create  --name='OCR' --cmd="bash /workspace/boby/projects/EAST_tf/install.sh"  --image='CV-Caffe_TF1.8-Py3'  --gpu_count='2' --project_id='419'  –-task_type='GPU' –-prior_gpu_kind='V100'

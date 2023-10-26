@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+package facethink;
+
+// send message
+message DataProto {
+
+  optional string data_json = 1;
+  optional string sdk_id = 2;
+  optional string methrod_id = 3;
+}
+
+// response message
+message ModelProto {
+
+  optional string data_json = 1;
+  optional string sdk_id = 2;
+  optional string methrod_id = 3;
+}
+
+service grpcServer {
+    rpc process(DataProto) returns (ModelProto) {}
+}

@@ -1,0 +1,70 @@
+project_name: monkey_correction_ai/pipeline_for_ikkyyu
+version_num: V1.0.5
+is_container: False
+description: ikkyyu
+dependences:
+
+    # detection module
+    - project_name:  ssd_for_ikkyyu
+      version_num: V2.0.4
+      type:  git
+      remote_address: git.100tal.com/monkey_correction_ai/ssd_for_ikkyyu.git
+      branch: master
+      deploy_location:  ssd_for_ikkyyu
+
+    # recognition module
+    - project_name:  crnn_for_ikkyyu
+      version_num: V2.0.3
+      type:  git
+      remote_address: git.100tal.com/monkey_correction_ai/crnn_for_ikkyyu.git
+      branch: master
+      deploy_location:  crnn_for_ikkyyu
+
+    # east module
+    - project_name:  east_for_ikkyyu
+      version_num: V2.0.3
+      type:  git
+      remote_address: git.100tal.com/monkey_correction_ai/east_for_ikkyyu.git
+      branch: master
+      deploy_location:  east_for_ikkyyu
+
+    # east module
+    - project_name:  attention_for_ikkyyu
+      version_num: V1.0.0
+      type:  git
+      remote_address: git.100tal.com/monkey_correction_ai/attention_for_ikkyyu.git
+      branch: master
+      deploy_location:  attention_for_ikkyyu
+
+  # detection model
+    - project_name:  Models/ssd
+      version_num:  V0.6.12
+      type:  ftp
+      remote_address: /cv/MODEL/OCR/ssd/V0.6.12
+      deploy_location: Models/ssd
+      model_path: ./Models/ssd/model.ckpt-V0.6.12
+
+   # recognition model
+    - project_name: Models/crnn
+      version_num: V0.7.15
+      type: ftp
+      remote_address: /cv/MODEL/OCR/crnn/V0.7.15
+      deploy_location: Models/crnn
+      model_path: ./Models/crnn/V0.7.15.ckpt
+
+    # east model
+    - project_name: Models/east
+      version_num: V0.7.11
+      type: ftp
+      remote_address: /cv/MODEL/OCR/east/V0.7.11
+      deploy_location: Models/east
+      model_path: ./Models/east/V0.7.11.ckpt
+
+    # attention model
+    - project_name: Models/attention
+      version_num: V0.7.11
+      type: ftp
+      remote_address: /cv/MODEL/OCR/attention/V0.7.11
+      deploy_location: Models/attention
+      model_path: ./Models/attention/V0.7.11.pth
+      torch_slim_path: ./densenet_attention/q1_torch_slim.txt
